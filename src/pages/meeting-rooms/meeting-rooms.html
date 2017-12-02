@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Meeting Rooms</ion-title>
+  </ion-navbar>
+  <ion-buttons right>
+    <button ion-button icon-only (click)="createMeetingRoom()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-header>
+
+<ion-content padding>
+  <ion-list *ngFor="let meetingRoom of meetingRoomsList">
+    <ion-item-sliding>
+      <ion-item>
+        <h2>{{meetingRoom.name}}</h2>
+        <p>{{meetingRoom.location}}</p>
+        <button ion-button clear item-end (click)="viewDetail(meetingRoom.name)">View</button>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="danger" (click)="deleteMeetingRoom(meetingRoom.name)">
+          <ion-icon name="trash" class="delete-icon"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

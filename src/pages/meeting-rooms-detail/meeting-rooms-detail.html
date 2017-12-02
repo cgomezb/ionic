@@ -1,0 +1,53 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{meetingRoom.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list radio-group [(ngModel)]="meetingRoom.engaged">
+    <ion-item>
+      <ion-label color="primary" stacked>Status</ion-label>
+      <ion-label>Engaged</ion-label>
+      <ion-radio value="true"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Available</ion-label>
+      <ion-radio value="false"></ion-radio>
+    </ion-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-thumbnail item-start>
+      <img src="{{meetingRoom.image}}" (click)="selectImage()">
+    </ion-thumbnail>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" stacked>Location</ion-label>
+    {{meetingRoom.location}}
+    <ion-select [(ngModel)]="meetingRoom.location">
+      <ion-option value="">...Please select One...</ion-option>
+      <ion-option *ngFor="let loc of location" value="{{loc.name}}">{{loc.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" stacked>Last Clean Up Date</ion-label>
+    <ion-input [(ngModel)]="meetingRoom.lastCleanUp" type="date" placeholder="Last Clean Up Date"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" stacked>Seats</ion-label>
+    <ion-input [(ngModel)]="meetingRoom.seats" type="txt" placeholder="Seats"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <button ion-button (click)="updateMeetingRoom()">Save</button>
+    <button ion-button (click)="cancel()">Cancel</button>
+  </ion-item>
+</ion-content>
